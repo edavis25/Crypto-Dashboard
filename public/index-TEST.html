@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    THIS IS THE HTML
+    <form id="myForm" name="myForm">
+        <input type="text" name="email" /><br>
+        <input type="text" name="tickers" /><br>
+        <input type="text" name="exchanges" /><br>
+        <input type="submit" />
+    </form>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script>
+        $('#myForm').on('submit', function(event) {
+            event.preventDefault();
+            var formatArr = {};
+            var i = 0; // testing index
+
+            $.each($(this).serializeArray(), function() {
+                var name = $(this).attr('name');
+                var value = $(this).attr('value');
+                if (i == 0) {
+                    formatArr[name] = value;
+                }
+                else {
+                    let arr = [];
+                    arr.push(value); // To match DB schema
+                    formatArr[name] = arr;
+                }
+                i++;
+            });
+            console.log(formatArr);
+            formatArr = JSON.stringify(formatArr);
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:3000/profile/",
+                dataType: "json",
+                contentType : "application/json",
+                data: formatArr
+            })
+            .done(function(response) {
+                console.log(response);
+            })
+            .fail(function(response) {
+                console.log(response);
+                alert("ERROR");
+            });
+        });
+    </script>
+  </body>
+</html>
