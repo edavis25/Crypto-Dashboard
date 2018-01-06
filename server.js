@@ -15,6 +15,7 @@ const port = 3000;
 // Routes
 const index = require(path.join(__rootdir, 'routes', 'index'));
 const profile = require(path.join(__rootdir, 'routes', 'api', 'profile'));
+const tickers = require(path.join(__rootdir, 'routes', 'api', 'tickers'));
 
 /******************************
  | Configure server
@@ -25,13 +26,14 @@ mongoose.connect('mongodb://localhost/crypto-dashboard')
     .catch((err) => console.error(err));
 
 app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: false }));
 
 // Serve static files
 app.use(express.static(path.join(__rootdir, 'public')));
-// Create API routes
+// Create profile API routes
 app.use('/', index);
 app.use('/profile', profile);
+// Create route for CoinMarketcap tickers API
+app.use('/tickers', tickers);
 
 // Start server
 app.listen(port, function() {

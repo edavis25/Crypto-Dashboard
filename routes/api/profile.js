@@ -1,3 +1,7 @@
+/*******************************
+ | Routes for profile data stored
+ | in local database
+ *******************************/
 const express = require('express');
 const router = express.Router();
 const path = require('path');
