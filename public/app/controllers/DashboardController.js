@@ -4,6 +4,7 @@ angular.module('crypto')
         // Set profile using route param or default profile id
         var userId = $routeParams.id ? $routeParams.id : '5a4ea86bddde84c48863ae6d';
         $scope.user = userProfile.get({ user: userId });
-        $scope.tickers = marketTickers.query();
+        console.log($scope.user._id);
+        //$scope.tickers = marketTickers.query({ pairs: $scope.user.tickers });
         console.log($scope.tickers);
     }]);

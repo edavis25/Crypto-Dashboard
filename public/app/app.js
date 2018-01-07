@@ -14,9 +14,9 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 
 app.factory('userProfile', function($resource) {
-    return $resource('http://localhost:3000/profile/:user', { user: "@user"});
+    return $resource('http://localhost:3000/profile/:user', { user: "@user" });
 });
 
 app.factory('marketTickers', function($resource) {
-    return $resource('http://localhost:3000/tickers');
+    return $resource('http://localhost:3000/tickers/:pairs', { pairs: "@pairs" });
 });

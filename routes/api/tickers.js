@@ -14,4 +14,9 @@ router.get('/', function(req, res, next) {
     }).pipe(res);
 });
 
+// Get profile data
+router.get('/:pairs', function(req, res, next) {
+    console.log(req.params.pairs);
+});
+
 module.exports = router;
