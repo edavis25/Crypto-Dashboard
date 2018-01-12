@@ -12,11 +12,11 @@
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
         <!-- Font Awesome 4.7.0 -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <!-- Styles -->
+        <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
         <div class="container-fluid" id="page-wrapper">
-            Hello!
-
             <!-- Angular View -->
             <div ng-view=""></div>
         </div> <!-- /end #page-wrapper -->
@@ -35,5 +35,8 @@
         <!-- App -->
         <script src="app/app.js"></script>
         <script src="app/controllers/DashboardController.js"></script>
+        <script src="app/controllers/TickerController.js"></script>
+        <script src="app/directives/tickers.js"></script>
+
     </body>
 </html>

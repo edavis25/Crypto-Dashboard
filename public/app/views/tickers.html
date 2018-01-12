@@ -1,0 +1,10 @@
+<div class="card-deck" ng-controller="TickerController">
+    <div class="card col-sm-3 {{ getPercentChangeClass(ticker.percent_change_1h) }}" ng-repeat="ticker in tickers" ng-if="user.tickers.includes(ticker.symbol)">
+      <h4 class="card-title"><b>{{ ticker.symbol }}</b> - <small>{{ ticker.name }}</small></h4>
+      <h3 class="card-text ticker-price">{{ ticker.price_usd | currency:"$":2 }}</h3>
+      <h4 class="ticker-percent">{{ ticker.percent_change_1h }}%</h4>
+      <p class="card-text">24h Volume:<br>{{ ticker['24h_volume_usd'] }}</p>
+      <p class="card-text"><small class="text-muted">Updated {{ ticker.last_updated * 1000 | date:"MM/dd/yyyy 'at' h:mma" }}</small></p>
+      <!--  | date:"MM/dd/yyyy 'at' h:mma"  -->
+    </div>
+</div>

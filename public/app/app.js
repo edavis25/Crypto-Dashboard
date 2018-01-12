@@ -18,5 +18,5 @@ app.factory('userProfile', function($resource) {
 });
 
 app.factory('marketTickers', function($resource) {
-    return $resource('http://localhost:3000/tickers/:pairs', { pairs: "@pairs" });
+    return $resource('http://localhost:3000/tickers/');
 });

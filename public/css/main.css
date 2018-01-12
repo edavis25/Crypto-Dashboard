@@ -1,0 +1,16 @@
+.positive .ticker-price, .positive .ticker-percent {
+  color: green; }
+
+.positive .ticker-price:after {
+  content: " \f0d8";
+  font-family: FontAwesome; }
+
+.positive .ticker-percent:before {
+  content: '+'; }
+
+.negative .ticker-price, .negative .ticker-percent {
+  color: red; }
+
+.negative .ticker-price:after {
+  content: " \f0d7";
+  font-family: FontAwesome; }
