@@ -33,10 +33,18 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.8/angular-route.min.js" integrity="sha256-+rsaX/rEnnh0OQrK9qi+p7qsM8nylkcEfOOhgC3ver0=" crossorigin="anonymous"></script>
 
         <!-- App -->
+        <script src="/socket.io/socket.io.js"></script>
         <script src="app/app.js"></script>
         <script src="app/controllers/DashboardController.js"></script>
         <script src="app/controllers/TickerController.js"></script>
         <script src="app/directives/tickers.js"></script>
 
+        <script>
+            var socket = io();
+            socket.on('refresh_tickers', function(data) {
+
+                console.log(data);
+            });
+        </script>
     </body>
 </html>

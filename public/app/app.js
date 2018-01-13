@@ -1,4 +1,5 @@
 var app = angular.module('crypto', ['ngRoute', 'ngResource']);
+//var socket = io();
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider

@@ -12,6 +12,9 @@
     "express": "^4.16.2",
     "gulp": "^3.9.1",
     "gulp-sass": "^3.1.0",
-    "mongoose": "^5.0.0-rc1"
+    "mongoose": "^5.0.0-rc1",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "socket.io": "^2.0.4"
   }
 }

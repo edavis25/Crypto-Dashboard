@@ -36,7 +36,24 @@ app.use('/profile', profile);
 // Create route for CoinMarketcap tickers API
 app.use('/tickers', tickers);
 
-// Start server
-app.listen(port, function() {
+// Start server and return server instance for socket
+const server = app.listen(port, function() {
     console.log('Come with me to port 3000 if you want to live');
 });
+
+/******************************
+ | Initialize websockets
+ ******************************/
+// Create websocket & get broadcasting helper
+const io = require('socket.io')(server);
+const broadcastTickers = require('./lib/broadcastTickers').broadcastTickers;
+
+// Broadcast tickers immediately on initial connection
+io.on('connection', function(socket) {
+    broadcastTickers(io);
+});
+
+// Then broadcast tickers every 10 seconds
+setInterval(function() {
+    broadcastTickers(io);
+}, 10000);
