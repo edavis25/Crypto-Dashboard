@@ -1,22 +1,20 @@
 /*******************************
- | Proxy request to CoinmarketCap API tickers
+ | Proxy request to Cryptocompare API coin details
  | to avoid CORS errors in Angular
  *******************************/
 const express = require('express');
 const router = express.Router();
 const path = require('path');
 const request = require('request');
+const apicache = require('apicache');
+const apiUrl = 'https://min-api.cryptocompare.com/data/all/coinlist';
 
 // Get all tickers
-router.get('/', function(req, res, next) {
+let cache = apicache.middleware;
+router.get('/', cache('60 minutes'), function(req, res, next) {
     request({
-        uri: 'https://api.coinmarketcap.com/v1/ticker/',
+        uri: apiUrl,
     }).pipe(res);
-});
-
-// Get profile data
-router.get('/:pairs', function(req, res, next) {
-    console.log(req.params.pairs);
 });
 
 module.exports = router;

@@ -9,6 +9,7 @@
   "author": "Eric Davis",
   "license": "MIT",
   "dependencies": {
+    "apicache": "^1.2.0",
     "express": "^4.16.2",
     "gulp": "^3.9.1",
     "gulp-sass": "^3.1.0",

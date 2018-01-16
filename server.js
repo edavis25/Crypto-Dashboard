@@ -16,6 +16,7 @@ const port = 3000;
 const index = require(path.join(__rootdir, 'routes', 'index'));
 const profile = require(path.join(__rootdir, 'routes', 'api', 'profile'));
 const tickers = require(path.join(__rootdir, 'routes', 'api', 'tickers'));
+const details = require(path.join(__rootdir, 'routes', 'api', 'coinDetails'));
 
 /******************************
  | Configure server
@@ -33,8 +34,10 @@ app.use(express.static(path.join(__rootdir, 'public')));
 // Create profile API routes
 app.use('/', index);
 app.use('/profile', profile);
-// Create route for CoinMarketcap tickers API
+// Create route for Coinmarketcap tickers API
 app.use('/tickers', tickers);
+// Create route for Cryptocompare coin details API
+app.use('/details', details);
 
 // Start server and return server instance for socket
 const server = app.listen(port, function() {

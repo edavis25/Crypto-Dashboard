@@ -3,10 +3,21 @@ angular.module('crypto')
         // Get tickers (resolve user promise before setting websocket event listener)
         $scope.user.$promise.then(function(user) {
             socket.on('refresh_tickers', function(tickers) {
-                $scope.subscribedTickers = userTickers.getUserTickers(user, tickers);
-                console.log($scope.subscribedTickers)
+                $scope.tickers = userTickers.getUserTickers(user, tickers);
+                console.log($scope.tickers);
             });
         });
+        
+        /* REFACTORED TO REMOVE THE COIN DETAILS INJECTION
+        Promise.all([$scope.user.$promise, $scope.coinDetails.$promise])
+               .then(function(userAndDetails) {
+                   socket.on('refresh_tickers', function(tickers) {
+                       $scope.tickers = userTickers.getUserTickers(userAndDetails, tickers);
+                       //console.log($scope.tickers);
+                   });
+               });
+        */
+
 
         /* NOTE: Refactored to use websockets
         $scope.tickers = marketTickers.query();
@@ -21,7 +32,7 @@ angular.module('crypto')
             $scope.sock = parsed;
         });
         */
-        
+
         // Function for applying classes for positive/negative percent changes
         $scope.getPercentChangeClass = function(percentChange) {
             if (percentChange > 0) {
