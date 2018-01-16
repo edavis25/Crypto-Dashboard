@@ -14,12 +14,36 @@ app.config(['$routeProvider', function($routeProvider) {
         .otherwise({ redirectTo: '/' });
 }]);
 
+// Service for user profile resource
 app.factory('userProfile', function($resource) {
     return $resource('http://localhost:3000/profile/:user', { user: "@user" });
 });
 
+// NOTE: Currently unused when replaced by Websockets tickers
 app.factory('marketTickers', function($resource) {
     return $resource('http://localhost:3000/tickers/');
+});
+
+// Service for retrieving only the tickers subscribed by user
+app.factory('userTickers', function($resource) {
+    return {
+        getUserTickers : function(user, allTickers) {
+            // Parse the JSON + initialize the subscription array
+            var allTickers = JSON.parse(allTickers);
+            var subscribed = [];
+
+            // Iterate the user profile's ticker subscriptions and add the matching
+            // tickers to the local array
+            for (var i = 0; i < user.tickers.length; i++) {
+                // From currency to currency = BTC-USD (aka from Bitcoin to USD)
+                let from = user.tickers[i].from;
+                let to = user.tickers[i].to;
+                subscribed.push(allTickers["RAW"][from][to]);
+            }
+            
+            return subscribed;
+        }
+    }
 });
 
 // This factory's code written by Brian Ford, many thanks!
