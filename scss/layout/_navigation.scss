@@ -1,0 +1,91 @@
+// Hamburger navigation container
+#nav-burger {
+    position: relative;
+    display: none;      // Hide on large widths
+
+    // Show hamburger on small widths only
+    @include bootstrap-breakpoint-max(md) {
+        display: inline-block;
+        width: 35px;
+        height: 20px;
+        cursor: pointer;
+
+        // Hamburger icon bar styles
+        .bar {
+            position: absolute;
+            height: 5px;
+            width: 100%;
+            border-radius: 5px;
+            background-color: #000;
+            transition: .25s ease-in-out;
+            right: 0;
+
+            &:nth-child(1) {
+                top: 0;
+            }
+            &:nth-child(2) {
+                top: 50%;
+            }
+            &:nth-child(3) {
+                top: 100%;
+            }
+        }
+
+        // Hamburger styles when switched to close icon
+        &.close-burger {
+            .bar {
+                background-color: #fff;
+                z-index: 10;
+                // Rotate first bar to create one side of close "X"
+                &:nth-child(1) {
+                    transform: rotate(135deg);
+                    top: 10px;
+                }
+                // Slide middle bar to side + set disappearing styles
+                &:nth-child(2) {
+                    margin-right: 50px;
+                    opacity: 0;
+                    width: 0px;
+                }
+                // Rotate last bar to create other side of close "X"
+                &:nth-child(3) {
+                    transform: rotate(-135deg);
+                    top: 10px;
+                }
+            }
+        }
+    }
+}
+
+#sidenav {
+    @include bootstrap-breakpoint-max(md) {
+        // Create the hidden sidenav for small widths
+        overflow-x: hidden;
+        transition: all 0.2s linear;
+        width: 0px;
+        background-color: #000;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        z-index: 9;
+
+        // Override Bootstrap hiding elements when menu collapsed
+        .collapse {
+            display: block;
+            margin-top: 50px;
+        }
+
+        // Styles for opened sidenav
+        &.open {
+            // Open sidenav by expanding width
+            width: 300px;
+
+            // Style the links
+            a {
+                color: #fff;
+                text-align: center;
+            }
+        }
+    }
+}

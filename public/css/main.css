@@ -14,3 +14,60 @@
 .negative .ticker-price:after {
   content: " \f0d7";
   font-family: FontAwesome; }
+
+#nav-burger {
+  position: relative;
+  display: none; }
+  @media (max-width: 767px) {
+    #nav-burger {
+      display: inline-block;
+      width: 35px;
+      height: 20px;
+      cursor: pointer; }
+      #nav-burger .bar {
+        position: absolute;
+        height: 5px;
+        width: 100%;
+        border-radius: 5px;
+        background-color: #000;
+        transition: .25s ease-in-out;
+        right: 0; }
+        #nav-burger .bar:nth-child(1) {
+          top: 0; }
+        #nav-burger .bar:nth-child(2) {
+          top: 50%; }
+        #nav-burger .bar:nth-child(3) {
+          top: 100%; }
+      #nav-burger.close-burger .bar {
+        background-color: #fff;
+        z-index: 10; }
+        #nav-burger.close-burger .bar:nth-child(1) {
+          transform: rotate(135deg);
+          top: 10px; }
+        #nav-burger.close-burger .bar:nth-child(2) {
+          margin-right: 50px;
+          opacity: 0;
+          width: 0px; }
+        #nav-burger.close-burger .bar:nth-child(3) {
+          transform: rotate(-135deg);
+          top: 10px; } }
+
+@media (max-width: 767px) {
+  #sidenav {
+    overflow-x: hidden;
+    transition: all 0.2s linear;
+    width: 0px;
+    background-color: #000;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 9; }
+    #sidenav .collapse {
+      display: block;
+      margin-top: 50px; }
+    #sidenav.open {
+      width: 300px; }
+      #sidenav.open a {
+        color: #fff;
+        text-align: center; } }

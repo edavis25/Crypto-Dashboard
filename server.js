@@ -22,8 +22,7 @@ const details = require(path.join(__rootdir, 'routes', 'api', 'coinDetails'));
  | Configure server
  ******************************/
 // Connect to database
-//mongoose.connect('mongodb://localhost/crypto-dashboard')
-mongoose.connect('mongodb://192.168.0.105/crypto-dashboard')
+mongoose.connect('mongodb://192.168.0.102/crypto-dashboard')
     .then(() => console.log('Connected to Mongodb'))
     .catch((err) => console.error(err));
 

@@ -1,0 +1,47 @@
+// Media query mixin for min-width (based on Bootstrap breakpoints)
+@mixin bootstrap-breakpoint-min($breakpoint) {
+    @if $breakpoint == sm {
+        @media (min-width: $bootstrap-sm) {
+            @content;
+        }
+    }
+    @if $breakpoint == md {
+        @media (min-width: $bootstrap-md) {
+            @content;
+        }
+    }
+    @if $breakpoint == lg {
+        @media (min-width: $bootstrap-lg) {
+            @content;
+        }
+    }
+    @if $breakpoint == xl {
+        @media (min-width: $bootstrap-xl) {
+            @content;
+        }
+    }
+}
+
+// Media query mixin for max-width (based on Bootstrap breakpoints)
+@mixin bootstrap-breakpoint-max($breakpoint) {
+    @if $breakpoint == sm {
+        @media (max-width: $bootstrap-sm - 1px) {
+            @content;
+        }
+    }
+    @if $breakpoint == md {
+        @media (max-width: $bootstrap-md - 1px) {
+            @content;
+        }
+    }
+    @if $breakpoint == lg {
+        @media (max-width: $bootstrap-lg - 1px) {
+            @content;
+        }
+    }
+    @if $breakpoint == xl {
+        @media (max-width: $bootstrap-xl - 1px) {
+            @content;
+        }
+    }
+}
