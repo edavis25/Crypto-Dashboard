@@ -52,22 +52,26 @@
           transform: rotate(-135deg);
           top: 10px; } }
 
-@media (max-width: 767px) {
-  #sidenav {
-    overflow-x: hidden;
-    transition: all 0.2s linear;
-    width: 0px;
-    background-color: #000;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100vh;
-    z-index: 9; }
-    #sidenav .collapse {
-      display: block;
-      margin-top: 50px; }
-    #sidenav.open {
-      width: 300px; }
-      #sidenav.open a {
-        color: #fff;
-        text-align: center; } }
+#sidenav {
+  width: 100%; }
+  @media (max-width: 767px) {
+    #sidenav {
+      overflow-x: hidden;
+      transition: all 0.2s linear;
+      width: 0px;
+      background-color: #000;
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100vh;
+      z-index: 9; }
+      #sidenav .collapse {
+        display: block;
+        margin-top: 50px; }
+      #sidenav.open {
+        width: 300px; }
+        #sidenav.open li {
+          text-align: center; }
+        #sidenav.open a {
+          display: inline-block;
+          color: #fff; } }

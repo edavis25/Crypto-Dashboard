@@ -58,6 +58,8 @@
 }
 
 #sidenav {
+    width: 100%;    // Set full width for floats
+
     @include bootstrap-breakpoint-max(md) {
         // Create the hidden sidenav for small widths
         overflow-x: hidden;
@@ -81,10 +83,13 @@
             // Open sidenav by expanding width
             width: 300px;
 
+            li {
+                text-align: center;
+            }
             // Style the links
             a {
+                display: inline-block;
                 color: #fff;
-                text-align: center;
             }
         }
     }
