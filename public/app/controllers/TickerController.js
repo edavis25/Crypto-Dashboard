@@ -7,7 +7,32 @@ angular.module('crypto')
                 console.log($scope.tickers);
             });
         });
-        
+
+        $scope.$watch('tickers', function(newTickers, oldTickers, scope) {
+            if (!oldTickers) {
+                return;
+            }
+            // Iterate the new tickers array
+            for (var i = 0; i < newTickers.length; i++) {
+                // Then iterate the old tickers array
+                for (var j = 0; j < oldTickers.length; j++) {
+                    // Check if ticker pair matches
+                    if (newTickers[i].fromSymbol == oldTickers[j].fromSymbol
+                        && newTickers[i].toSymbol == oldTickers[j].toSymbol) {
+                        // Set price change
+                        if (newTickers[i].price < oldTickers[j].price) {
+                            newTickers[i].priceChange = 'decrease';
+                        }
+                        else if (newTickers[i].price > oldTickers[j].price) {
+                            newTickers[i].priceChange = 'increase';
+                        }
+                        // Ticker price change defaults to 'even'
+                        break;
+                    }
+                }
+            }
+        });
+
         /* REFACTORED TO REMOVE THE COIN DETAILS INJECTION
         Promise.all([$scope.user.$promise, $scope.coinDetails.$promise])
                .then(function(userAndDetails) {

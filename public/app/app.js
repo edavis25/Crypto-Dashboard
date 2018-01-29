@@ -40,6 +40,7 @@ app.factory('formatTicker', function() {
         this.high           = ticker["HIGHDAY"];
         this.lastExchange   = ticker["LASTMARKET"];
         this.lastUpdate     = ticker["LASTUPDATE"];
+        this.priceChange    = 'even';   // Default price change to even
     }
 
     return FormattedTicker;
@@ -80,7 +81,7 @@ app.factory('userTickers', function($resource, formatTicker) {
 });
 
 // This factory's code written by Brian Ford, many thanks!
-// https://www.html5rocks.com/en/tutorials/frameworks/angular-websockets/#disqus_thread
+// https://www.html5rocks.com/en/tutorials/frameworks/angular-websockets/
 app.factory('socket', function($rootScope) {
     var socket = io();
     return {
